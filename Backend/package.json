@@ -1,0 +1,33 @@
+{
+  "name": "pop-skate-shop",
+  "version": "1.0.0",
+  "description": "Proyecto de Desarrollo de Aplicaciones Multiplataforma de tienda online usando Angular, Express.js, MongoDB, Mongoose y Node.js,",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlejandroVidalM/pop-skate-shop.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlejandroVidalM/pop-skate-shop/issues"
+  },
+  "homepage": "https://github.com/AlejandroVidalM/pop-skate-shop#readme",
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/node": "^7.15.4",
+    "@babel/preset-env": "^7.15.6",
+    "nodemon": "^2.0.13"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "uuid": "^8.3.2"
+  }
+}
