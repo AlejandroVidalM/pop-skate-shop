@@ -6,10 +6,10 @@ const userSchema = new Schema({
     apellidos: String,
     email: String,
     password: String,
-    direccion: {
-        type: mongoose.ObjectId,
-        ref: 'Direccion'
-    },
+    provincia: String,
+    ciudad: String,
+    direccion: String,
+    codigoPostal: String,
     role: { type: String, default:'user'},
 });
 

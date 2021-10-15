@@ -16,8 +16,11 @@ const userRepository = {
             apellidos: user.apellidos,
             nombreCompleto: user.nombre+" "+user.apellidos,
             email: user.email,
+            provincia: user.provincia,
+            ciudad: user.ciudad,
             direccion: user.direccion,
-            isAdmin: user.isAdmin,
+            codigoPostal: user.codigoPostal,
+            role: user.role,
         }
     },
     async create(newUser) {
@@ -34,8 +37,12 @@ const userRepository = {
                 nombre: newUser.nombre,
                 apellidos: newUser.apellidos,
                 email: newUser.email,
+                provincia: newUser.provincia,
+                ciudad: newUser.ciudad,
+                direccion: newUser.direccion,
+                codigoPostal: newUser.codigoPostal,
                 password: password,
-                isAdmin: newUser.isAdmin,
+                role: newUser.role,
             });
             const result = await theUser.save();
             return result;

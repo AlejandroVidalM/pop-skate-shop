@@ -9,6 +9,10 @@ const AuthController = {
                     nombre: req.body.nombre,
                     apellidos: req.body.apellidos,
                     email: req.body.email,
+                    provincia: req.body.provincia,
+                    ciudad: req.body.ciudad,
+                    direccion: req.body.direccion,
+                    codigoPostal: req.body.codigoPostal,
                     password: req.body.password,
                     role: "user",
                 });
