@@ -6,6 +6,7 @@ import { env } from 'process';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { environment } from 'src/environments/environment';
+import { LoginDto } from '../dto/login-dto';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,13 +17,12 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class RegisterService {
+export class AuthService {
 
   private registerURL = environment.urlBase+'/auth/register';
+  private loginURL = environment.urlBase+'/auth/login';
   constructor(private http: HttpClient, private router: Router) { }
   registro(user: User): Observable<RegistroDto> {
-    console.log(this.registerURL);
-    console.log(user);
     return this.http.post<any>(this.registerURL, {
       "nombre": "Luisasdasd Misguel",
       "apellidos": "asd asdasd",
@@ -36,6 +36,15 @@ export class RegisterService {
     });
 
     // let test = this.http.post<any>(this.registerURL, user, httpOptions);
+
+  }
+  login(loginDto: LoginDto){
+    console.log(JSON.stringify(loginDto))
+    // {"username":"luismi.lopez@salesianos.edu","password":"123456"}
+    let response1 = this.http.post<any>(this.loginURL, {"username":"luismi.lopez@salesianos.edu","password":"123456"} );
+    let response2 = this.http.post<any>(this.loginURL, JSON.stringify(loginDto) );
+    return response1
+
 
   }
 

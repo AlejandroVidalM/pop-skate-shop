@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { RegisterService } from "../../../services/register.service";
 import { Router } from "@angular/router";
 import { RegistroDto } from "src/app/dto/register.dto";
 import { FormControl, FormGroup } from "@angular/forms";
 import { User } from "src/app/models/user";
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
   selector: "app-register",
@@ -12,7 +12,7 @@ import { User } from "src/app/models/user";
 export class RegisterComponent implements OnInit {
   user: RegistroDto;
   constructor(
-    private registerService: RegisterService,
+    private authService: AuthService,
     private router: Router
   ) {}
 
@@ -41,7 +41,7 @@ export class RegisterComponent implements OnInit {
   // this.registerService.updateUser(objectUser);
   console.log(objectUser);
 
-  this.registerService.registro(objectUser);
+  this.authService.registro(objectUser);
 }
   ngOnInit(): void {
   }
