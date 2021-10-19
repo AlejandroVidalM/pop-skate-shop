@@ -8,6 +8,7 @@ import morgan from "morgan";
 import morganBody from "morgan-body";
 import routes from './routes/index';
 import { inicializacion } from './services/inicializacion';
+import { getProvinces, getCities} from 'spanishcities'
 
 const app = express();
 app.use(cors());

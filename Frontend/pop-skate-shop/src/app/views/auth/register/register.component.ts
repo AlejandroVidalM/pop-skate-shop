@@ -4,6 +4,7 @@ import { RegistroDto } from "src/app/dto/register.dto";
 import { FormControl, FormGroup } from "@angular/forms";
 import { User } from "src/app/models/user";
 import { AuthService } from "src/app/services/auth.service";
+import { getProvinces } from 'spanishcities'
 
 @Component({
   selector: "app-register",
@@ -11,6 +12,7 @@ import { AuthService } from "src/app/services/auth.service";
 })
 export class RegisterComponent implements OnInit {
   user: RegistroDto;
+  provincias = getProvinces()
   constructor(
     private authService: AuthService,
     private router: Router
@@ -27,10 +29,7 @@ export class RegisterComponent implements OnInit {
     direccion: new FormControl(""),
     codigoPostal: new FormControl(""),
   });
-  onSubmit(){
-    console.log("safasf");
 
-  }
   doRegister() {
   let objectUser: User = {
     role: "user"
@@ -40,6 +39,7 @@ export class RegisterComponent implements OnInit {
   });
   // this.registerService.updateUser(objectUser);
   console.log(objectUser);
+  console.log(getProvinces());
 
   this.authService.registro(objectUser);
 }
