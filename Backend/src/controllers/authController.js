@@ -8,7 +8,7 @@ const AuthController = {
                 let usuarioCreado = await userRepository.create({
                     nombre: req.body.nombre,
                     apellidos: req.body.apellidos,
-                    email: req.body.email,
+                    username: req.body.email,
                     provincia: req.body.provincia,
                     ciudad: req.body.ciudad,
                     direccion: req.body.direccion,
@@ -16,7 +16,10 @@ const AuthController = {
                     password: req.body.password,
                     role: "user",
                 });
-                res.status(201).json(usuarioCreado);
+                const token = JwtService.sign(usuarioCreado);
+                res.status(201).json({
+                    token: token
+                });
             } else {
                 res.status(400).json({ mensaje: `Las contraseñas no coinciden` });
             }

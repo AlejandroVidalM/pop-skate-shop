@@ -1,10 +1,11 @@
 export interface User {
-
+  id: string;
   nombre: string;
   apellidos: string;
+  nombreCompleto: string;
   email: string;
-  password: string;
   provincia: string;
+  // password: string;
   ciudad: string;
   direccion: string;
   codigoPostal: string;

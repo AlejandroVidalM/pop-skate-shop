@@ -51,11 +51,24 @@ export const password = () => (req, res, next) =>
         })
     })(req, res, next);
 
+    const checkRole = (role, userRole) => {
 
-export const token = () => (req, res, next) =>
+        if (userRole == 'admin')
+            return true;
+    
+        return userRole == role;
+    
+    }
+
+export const token = (role = 'user') => (req, res, next) =>
     passport.authenticate('token', { session: false }, (err, user, info) => {
+
     if (err ||  !user) {
         return res.status(401).send("401: Necesitas adjuntar un token para poder acceder a esta función.");
+    }
+    
+    if (!checkRole(role, user.role)) {
+        return res.status(403).json({mensaje: "403: No tienes permisos para acceder a esta función"});
     }
     req.logIn(user, { session: false }, (err) => {
         if (err) return res.status(401).end()

@@ -12,7 +12,7 @@ import { User } from "src/app/models/user";
 export class LoginComponent implements OnInit {
     user: LoginDto= new LoginDto();
     constructor(
-      private authServie: AuthService,
+      private authService: AuthService,
       private router: Router
     ) {}
     loginUserForm = new FormGroup({
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
       Object.keys(this.loginUserForm.controls).map(key => {
         this.user[key] = this.loginUserForm.controls[key].value;
       });
-      this.authServie.login(this.user).subscribe(
+      this.authService.login(this.user).subscribe(
         res => {
           console.log(res);
           localStorage.setItem('token', res.token);
