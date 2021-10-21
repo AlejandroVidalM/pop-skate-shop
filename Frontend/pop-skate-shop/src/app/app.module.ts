@@ -52,10 +52,14 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {HttpClientModule, HttpClient} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AuthService } from "./services/auth.service";
+import { JwtModule } from "@auth0/angular-jwt";
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
+export function tokenGetter() {
+  return localStorage.getItem("token");
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -106,6 +110,13 @@ export function HttpLoaderFactory(http: HttpClient) {
   //         deps: [HttpClient]
   //     },
   // }),
+  JwtModule.forRoot({
+    config: {
+      tokenGetter: tokenGetter,
+      allowedDomains: ["example.com"],
+      disallowedRoutes: ["http://example.com/examplebadroute/"],
+    },
+  }),
   ReactiveFormsModule,
   FormsModule,
   ],
