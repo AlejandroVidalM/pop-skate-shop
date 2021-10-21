@@ -35,6 +35,11 @@ export class AuthService {
 
 
   }
+
+  logOut() {
+    localStorage.removeItem('token');
+    this.router.navigate(["/auth/register"]);
+  }
   public isAuthenticated(): boolean {
     const token = localStorage.getItem('token');
     const jwtHelper = this.injector.get(JwtHelperService);
@@ -42,5 +47,6 @@ export class AuthService {
     // true or false
     return !jwtHelper.isTokenExpired(token);
   }
+
 
 }
