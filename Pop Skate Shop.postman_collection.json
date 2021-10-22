@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "ceed1c72-aaed-4bad-97de-e9f8cc27fb79",
+		"name": "Pop Skate Shop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Registro de usuario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "fullname",
+									"value": "Luis Miguel López",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "nombre",
+									"value": "Luis Miguel",
+									"type": "text"
+								},
+								{
+									"key": "apellidos",
+									"value": "López Magaña",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "luismi.lopez@salesianos.edu3",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "admin",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "password2",
+									"value": "123456",
+									"type": "text"
+								},
+								{
+									"key": "provincia",
+									"value": "Sevilla",
+									"type": "text"
+								},
+								{
+									"key": "ciudad",
+									"value": "Sevilla",
+									"type": "text"
+								},
+								{
+									"key": "direccion",
+									"value": "C. Condes de Bustillo, N 17",
+									"type": "text"
+								},
+								{
+									"key": "codigoPostal",
+									"value": "41010",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/register",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"pm.environment.set(\"idUser\", jsonData.user.id);\r",
+									"pm.environment.set(\"token\", jsonData.token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"luismi.lopez@salesianos.edu\",\r\n    \"password\": \"123456\"\r\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/auth/login?email=luismi.lopez@salesianos.edu&password=12345678",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "luismi.lopez@salesianos.edu"
+								},
+								{
+									"key": "password",
+									"value": "12345678"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "noauth"
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "idUser",
+			"value": ""
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
