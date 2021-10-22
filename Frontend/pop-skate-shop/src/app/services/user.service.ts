@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { User } from '../models/user';
+import { User, userResponse } from '../models/user';
 
 
 const httpOptions = {
@@ -20,7 +20,7 @@ export class UserService {
   private perfilURL = environment.urlBase+'/perfil';
   constructor(private http: HttpClient, private router: Router) { }
 
-  getPerfil(): Observable<User> {
+  getPerfil(): Observable<userResponse> {
 
     let token = localStorage.getItem('token')
 
@@ -30,7 +30,7 @@ export class UserService {
         'Authorization': `Bearer ${token}`
       })
     };
-    return this.http.get<User>(this.perfilURL, authHeaders);
+    return this.http.get<userResponse>(this.perfilURL, authHeaders);
 
 
   }

@@ -11,3 +11,6 @@ export interface User {
   codigoPostal: string;
   role: { type: string, default:'user'},
 }
+export interface userResponse {
+  user: User;
+}

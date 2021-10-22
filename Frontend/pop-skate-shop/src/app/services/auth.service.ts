@@ -25,6 +25,8 @@ export class AuthService {
   private loginURL = environment.urlBase+'/auth/login';
   constructor( private injector:Injector, public jwtHelper: JwtHelperService, private http: HttpClient, private router: Router) { }
   registro(registroDto: RegistroDto): Observable<registerResponse> {
+    console.log(registroDto);
+
     return this.http.post<registerResponse>(this.registerURL, registroDto, httpOptions);
 
 

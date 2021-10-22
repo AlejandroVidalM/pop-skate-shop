@@ -6,11 +6,11 @@ import { userRepository } from '../../repositories/userRepository';
 import bcrypt from 'bcryptjs';
 
 passport.use(new LocalStrategy({
-    usernameField: "username",
+    usernameField: "email",
     passwordField: "password",
     session: false
-}, async (username, password, done) => {
-    const user = await userRepository.findByEmail(username);
+}, async (email, password, done) => {
+    const user = await userRepository.findByEmail( );
     if (user == undefined){
         return done(null, false);
     }else if (!bcrypt.compareSync(password, user.password)){
