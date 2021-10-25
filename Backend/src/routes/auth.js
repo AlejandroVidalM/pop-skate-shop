@@ -19,7 +19,7 @@ router.post(
 
     check("email")
       .isEmail()
-      .withMessage("El campo debe de ser un email valido"),
+      .withMessage("AAAAAAAAAAAAAAAAAA"),
     check('password2').custom((value, { req }) => {
         if (value !== req.body.password) {
               throw new Error('Las contraseñas no coinciden');
@@ -37,11 +37,9 @@ router.post(
 );
 router.post(
   "/login",
-  [
-    check("username")
-      .isEmail()
-      .withMessage("El campo debe de ser un email valido"),
-  ],
+  [check("email")
+  .isEmail()
+  .withMessage("El campo debe de ser un email valido")],
   validar,
   password(),
   AuthController.login

@@ -25,6 +25,7 @@ app.use(passport.initialize());
 
 app.use('/auth', routes.auth);
 app.use('/perfil', routes.user);
+app.use('/categoria', routes.categoria);
 
 mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true }, err => {
   

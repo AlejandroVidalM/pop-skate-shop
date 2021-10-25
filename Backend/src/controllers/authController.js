@@ -33,6 +33,7 @@ const AuthController = {
         }
     },
     login: (req, res, next) => {
+        
         const token = JwtService.sign(req.user);
         res.status(201).json({
             user: req.user,
