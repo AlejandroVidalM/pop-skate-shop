@@ -9,4 +9,5 @@ const { checkSchema } = require("express-validator");
 const router = Router();
 router.post('/new', token('admin'), CategoriaController.createCategoria);
 router.delete('/:id', token('admin'), CategoriaController.delete);
+router.put('/:id', token('admin'), CategoriaController.edit);
 export default router;

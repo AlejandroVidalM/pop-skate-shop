@@ -20,6 +20,18 @@ const categoriaRepository = {
     const result = await Categoria.find({categoriaPadre: id});
     return result != null ? result : undefined;
   },
+  
+  async updateById(id, categoriaModificada) {
+
+    const categoriaGuardada = await Categoria.findById(id);
+    if (categoriaGuardada != null) {
+        if (categoriaModificada.categoriaPadre==undefined){
+          categoriaGuardada.categoriaPadre=undefined
+        }
+        return await Object.assign(categoriaGuardada, categoriaModificada).save();
+    } else
+    return undefined
+},
 
   async delete(id) {
     return await Categoria.deleteOne({

@@ -46,5 +46,23 @@ const CategoriaController = {
       });
     }
   },
+  edit: async (req, res) => {
+    try {
+      
+      let categoria = await categoriaRepository.updateById(req.params.id, req.body);
+      if(categoria==undefined){
+        res.status(404).json({ mensaje: `404: El inventariable con ID: ${req.params.id} no está registrado en la base de datos`});
+      }else{
+        categoria != undefined ? res.status(200).json(categoria) : res.status(404).json({mensaje: `El inventariable con ID: ${req.params.id} no está registrado en la base de datos`});
+      }
+    } catch (error) {
+      
+      res
+        .status(404)
+        .json({
+          Error: `Ha ocurrido un error en la petición: ${error.message}`,
+        });
+    }
+  },
 };
 export { CategoriaController };
