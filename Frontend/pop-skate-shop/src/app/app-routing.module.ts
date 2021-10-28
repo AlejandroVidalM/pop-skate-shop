@@ -10,6 +10,7 @@ import { DashboardComponent } from "./views/admin/dashboard/dashboard.component"
 import { MapsComponent } from "./views/admin/maps/maps.component";
 import { SettingsComponent } from "./views/admin/settings/settings.component";
 import { TablesComponent } from "./views/admin/tables/tables.component";
+import { NewCategoryComponent } from "./views/admin/new-category/new-category.component";
 
 // auth views
 import { LoginComponent } from "./views/auth/login/login.component";
@@ -32,6 +33,7 @@ const routes: Routes = [
       { path: "settings", component: SettingsComponent },
       { path: "tables", component: TablesComponent, canActivate: [AuthGuard] },
       { path: "maps", component: MapsComponent },
+      { path: "categorias/new", component: NewCategoryComponent, canActivate: [AuthGuard] },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],
   },

@@ -3,19 +3,22 @@ import { categoriaRepository } from "../repositories/categoriaRepository";
 const CategoriaController = {
   createCategoria: async (req, res, next) => {
     try {
-        console.log(req.body.categoriaPadre);
-        console.log((await categoriaRepository.findById(req.body.categoriaPadre))==
-        undefined && req.body.categoriaPadre != undefined);
+      
+      console.log("!!!!!!!!!!!!!!!!!!!");
+      
+      console.log(req.body.categoriaPadre=='');
       if (
         (await categoriaRepository.findById(req.body.categoriaPadre)) ==
         undefined && req.body.categoriaPadre != undefined
       ) {
+        
         res
           .status(400)
           .json({
             mensaje: `400: La catgoria con ID: ${req.body.categoriaPadre} no está registrado en la base de datos`,
           });
       } else {
+        
         let nuevaCategoria = await categoriaRepository.create({
           nombre: req.body.nombre,
           categoriaPadre: req.body.categoriaPadre,
@@ -24,6 +27,7 @@ const CategoriaController = {
         res.status(201).json(nuevaCategoria);
       }
     } catch (error) {
+      
       res.status(404).json({
         Error: `Ha ocurrido un error en la petición: ${error.message}`,
       });
@@ -62,6 +66,23 @@ const CategoriaController = {
         .json({
           Error: `Ha ocurrido un error en la petición: ${error.message}`,
         });
+    }
+  },
+  findAll: async(req, res) => {
+    try{
+      let listaCategorias= await categoriaRepository.findAll();
+      if(listaCategorias.length==0){
+        res.status(404).json({ mensaje: `404: no se ha encontrado ningun elemento en la base de datos`});
+      }else{
+        res.status(200).json(listaCategorias);
+      }
+    } catch (error) {
+      
+    res
+      .status(404)
+      .json({
+        Error: `Ha ocurrido un error en la petición: ${error.message}`,
+      });
     }
   },
 };

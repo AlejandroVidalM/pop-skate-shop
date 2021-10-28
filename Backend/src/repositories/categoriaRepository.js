@@ -9,11 +9,16 @@ const categoriaRepository = {
       esParteObligatoria: nuevaCategoria.esParteObligatoria,
     });
     const result = await categoria.save();
+    console.log(result);
     return result;
   },
   async findById(id) {
     const result = await Categoria.findById(id).exec();
     return result != null ? result : undefined;
+  },
+  async findAll() {
+    const result =  await Categoria.find({}).exec();
+    return result;
   },
   async findByCategoriaPadre(id) {
     
