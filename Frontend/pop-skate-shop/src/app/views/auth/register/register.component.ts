@@ -61,7 +61,7 @@ export class RegisterComponent implements OnInit {
       },
       (err) => console.log(err)
     );
-    this.authService.registro(registroDto);
+    // this.authService.registro(registroDto);
   }
   ngOnInit(): void {}
 }

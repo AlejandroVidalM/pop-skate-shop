@@ -53,6 +53,10 @@ import {HttpClientModule, HttpClient} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AuthService } from "./services/auth.service";
 import { JwtModule } from "@auth0/angular-jwt";
+import { NewCategoryComponent } from './views/admin/new-category/new-category.component';
+import { CategoryComponent } from './views/admin/category/category.component';
+
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -96,6 +100,8 @@ export function tokenGetter() {
     IndexComponent,
     LandingComponent,
     ProfileComponent,
+    NewCategoryComponent,
+    CategoryComponent,
   ],
   imports: [
     BrowserModule,

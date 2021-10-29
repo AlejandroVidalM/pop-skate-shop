@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
       private router: Router
     ) {}
     loginUserForm = new FormGroup({
-      username: new FormControl(""),
+      email: new FormControl(""),
       password: new FormControl("")
     });
     doLogin(){

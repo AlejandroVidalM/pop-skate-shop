@@ -10,6 +10,7 @@ import { DashboardComponent } from "./views/admin/dashboard/dashboard.component"
 import { MapsComponent } from "./views/admin/maps/maps.component";
 import { SettingsComponent } from "./views/admin/settings/settings.component";
 import { TablesComponent } from "./views/admin/tables/tables.component";
+import { NewCategoryComponent } from "./views/admin/new-category/new-category.component";
 
 // auth views
 import { LoginComponent } from "./views/auth/login/login.component";
@@ -22,6 +23,7 @@ import { ProfileComponent } from "./views/profile/profile.component";
 import {
   AuthGuardService as AuthGuard
 } from '../app/services/auth-guard.service';
+import { CategoryComponent } from "./views/admin/category/category.component";
 const routes: Routes = [
   // admin views
   {
@@ -32,6 +34,9 @@ const routes: Routes = [
       { path: "settings", component: SettingsComponent },
       { path: "tables", component: TablesComponent, canActivate: [AuthGuard] },
       { path: "maps", component: MapsComponent },
+      { path: "categorias/new", component: NewCategoryComponent, canActivate: [AuthGuard] },
+      { path: "categorias", component: CategoryComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always', },
+      { path: "categorias/edit/:id", component: NewCategoryComponent, canActivate: [AuthGuard]},
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],
   },
@@ -53,7 +58,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
