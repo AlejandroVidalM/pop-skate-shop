@@ -34,6 +34,12 @@ export class CategoriaService {
     return res
 
   }
+  editarCategoria(categoriaDto: CategoriaDto): Observable<CategoriaResponse>{
+    return this.http.put<CategoriaResponse>(`${this.categoriaURL}/${categoriaDto._id}`, categoriaDto,this.authHeaders) }
+
+  deleteCategoria(id):Observable<CategoriaResponse>  {
+    return this.http.put<CategoriaResponse>(`${this.categoriaURL}/${id}`, this.authHeaders)
+  }
   getCategorias(): Observable<Array<Categoria>> {
     return this.http.get<Array<Categoria>>(this.categoriaURL, this.authHeaders)
   }

@@ -35,7 +35,8 @@ const routes: Routes = [
       { path: "tables", component: TablesComponent, canActivate: [AuthGuard] },
       { path: "maps", component: MapsComponent },
       { path: "categorias/new", component: NewCategoryComponent, canActivate: [AuthGuard] },
-      { path: "categorias", component: CategoryComponent, canActivate: [AuthGuard] },
+      { path: "categorias", component: CategoryComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always', },
+      { path: "categorias/edit/:id", component: NewCategoryComponent, canActivate: [AuthGuard]},
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],
   },
@@ -57,7 +58,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
