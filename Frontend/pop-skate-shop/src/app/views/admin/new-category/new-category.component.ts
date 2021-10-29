@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CategoriaDto } from 'src/app/dto/categoria.dto';
 import { Categoria, CategoriaResponse } from 'src/app/models/category.interface';
 import { CategoriaService } from 'src/app/services/categoria.service';
@@ -10,21 +11,15 @@ import { CategoriaService } from 'src/app/services/categoria.service';
 })
 export class NewCategoryComponent implements OnInit {
 
-  categoryList: Array<CategoriaResponse>
+  categoryList: Array<Categoria>
   categoriaPadre: string = undefined;
   newCategoryForm = new FormGroup({
     nombre: new FormControl(''),
     categoriaPadre: new FormControl(''),
     esParteObligatoria: new FormControl(''),
   });
-  constructor(private categoriaService: CategoriaService) { }
-  onChange($event){
-    let categoriaPadre: String = this.newCategoryForm.controls["categoriaPadre"].value
-    console.log(this.newCategoryForm.controls["categoriaPadre"]);
+  constructor(private categoriaService: CategoriaService, private router: Router) { }
 
-    console.log(categoriaPadre);
-
-  }
   onSubmit() {
     let categoriaDto: CategoriaDto = {
       // id: this.categoryId
@@ -39,12 +34,10 @@ export class NewCategoryComponent implements OnInit {
     });
     this.categoriaService.crearCategoria(categoriaDto).subscribe(
 
-      res => {
-
-        console.log(res);
-      },
       err => console.log(err)
     );
+
+    this.router.navigate(['/admin/categorias']);
 
   }
 

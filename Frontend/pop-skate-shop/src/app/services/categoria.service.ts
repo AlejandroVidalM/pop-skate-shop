@@ -34,8 +34,8 @@ export class CategoriaService {
     return res
 
   }
-  getCategorias(): Observable<Array<CategoriaResponse>> {
-    return this.http.get<Array<CategoriaResponse>>(this.categoriaURL, this.authHeaders)
+  getCategorias(): Observable<Array<Categoria>> {
+    return this.http.get<Array<Categoria>>(this.categoriaURL, this.authHeaders)
   }
   // getPerfil(): Observable<userResponse> {
 

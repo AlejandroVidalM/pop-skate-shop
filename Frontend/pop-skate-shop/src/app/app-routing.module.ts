@@ -23,6 +23,7 @@ import { ProfileComponent } from "./views/profile/profile.component";
 import {
   AuthGuardService as AuthGuard
 } from '../app/services/auth-guard.service';
+import { CategoryComponent } from "./views/admin/category/category.component";
 const routes: Routes = [
   // admin views
   {
@@ -34,6 +35,7 @@ const routes: Routes = [
       { path: "tables", component: TablesComponent, canActivate: [AuthGuard] },
       { path: "maps", component: MapsComponent },
       { path: "categorias/new", component: NewCategoryComponent, canActivate: [AuthGuard] },
+      { path: "categorias", component: CategoryComponent, canActivate: [AuthGuard] },
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],
   },
