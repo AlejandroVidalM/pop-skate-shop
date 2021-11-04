@@ -25,5 +25,5 @@ router.post(
 router.delete("/:id", token("admin"), ProductoController.delete);
 router.put("/:id", token("admin"), ProductoController.edit);
 router.get("", token(), ProductoController.findAll);
-// router.get('', token('admin'), ProductoController.findAll);
+router.get('/:id', token('admin'), ProductoController.findById);
 export default router;
