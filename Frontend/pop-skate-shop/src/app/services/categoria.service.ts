@@ -38,22 +38,10 @@ export class CategoriaService {
     return this.http.put<CategoriaResponse>(`${this.categoriaURL}/${categoriaDto._id}`, categoriaDto,this.authHeaders) }
 
   deleteCategoria(id):Observable<CategoriaResponse>  {
-    return this.http.put<CategoriaResponse>(`${this.categoriaURL}/${id}`, this.authHeaders)
+    return this.http.delete<CategoriaResponse>(`${this.categoriaURL}/${id}`, this.authHeaders)
   }
   getCategorias(): Observable<Array<Categoria>> {
     return this.http.get<Array<Categoria>>(this.categoriaURL, this.authHeaders)
   }
-  // getPerfil(): Observable<userResponse> {
 
-  //   let token = localStorage.getItem('token')
-
-  //   const authHeaders = {
-  //     headers: new HttpHeaders({
-  //       'Content-Type': 'application/json',
-  //       'Authorization': `Bearer ${token}`
-  //     })
-  //   };
-  //   return this.http.get<userResponse>(this.perfilURL, authHeaders);
-
-  // }
 }

@@ -32,7 +32,7 @@ export class CategoryComponent implements OnInit {
 
     return categoryFinded;
   }
-  ngOnInit(): void {
+  reloadCategorias(){
     this.categoriaService.getCategorias().subscribe(
 
       res => {
@@ -41,6 +41,9 @@ export class CategoryComponent implements OnInit {
       },
       err => console.log(err)
     );
+  }
+  ngOnInit(): void {
+    this.reloadCategorias();
   }
 
 

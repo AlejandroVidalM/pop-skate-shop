@@ -55,6 +55,8 @@ import { AuthService } from "./services/auth.service";
 import { JwtModule } from "@auth0/angular-jwt";
 import { NewCategoryComponent } from './views/admin/new-category/new-category.component';
 import { CategoryComponent } from './views/admin/category/category.component';
+import { ProductComponent } from './views/admin/product/product/product.component';
+import { NewProductComponent } from './views/admin/product/new-product/new-product.component';
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -102,6 +104,8 @@ export function tokenGetter() {
     ProfileComponent,
     NewCategoryComponent,
     CategoryComponent,
+    ProductComponent,
+    NewProductComponent,
   ],
   imports: [
     BrowserModule,
