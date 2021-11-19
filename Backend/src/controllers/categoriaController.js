@@ -4,9 +4,7 @@ const CategoriaController = {
   createCategoria: async (req, res, next) => {
     try {
       
-      console.log("!!!!!!!!!!!!!!!!!!!");
-      
-      console.log(req.body.categoriaPadre=='');
+
       if (
         (await categoriaRepository.findById(req.body.categoriaPadre)) ==
         undefined && req.body.categoriaPadre != undefined
@@ -35,7 +33,6 @@ const CategoriaController = {
   },
   delete: async (req, res) => {
     try {
-      console.log("CATEGORIASHIJAS");;
       let categoriaHijas = await categoriaRepository.findByCategoriaPadre(
         req.params.id
       );
@@ -55,9 +52,9 @@ const CategoriaController = {
       
       let categoria = await categoriaRepository.updateById(req.params.id, req.body);
       if(categoria==undefined){
-        res.status(404).json({ mensaje: `404: El inventariable con ID: ${req.params.id} no está registrado en la base de datos`});
+        res.status(404).json({ mensaje: `404: La categoría con ID: ${req.params.id} no está registrado en la base de datos`});
       }else{
-        categoria != undefined ? res.status(200).json(categoria) : res.status(404).json({mensaje: `El inventariable con ID: ${req.params.id} no está registrado en la base de datos`});
+        categoria != undefined ? res.status(200).json(categoria) : res.status(404).json({mensaje: `La categoría con ID: ${req.params.id} no está registrado en la base de datos`});
       }
     } catch (error) {
       

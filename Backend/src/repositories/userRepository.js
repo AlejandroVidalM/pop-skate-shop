@@ -3,9 +3,9 @@ import "dotenv/config";
 import { User } from "../models/user";
 
 const emailExists = async (theEmail) => {
-    return await  User.findOne({email: theEmail});
+    let result = await User.findOne({email: theEmail});
+    return result
 }
-
 
 const userRepository = {
     

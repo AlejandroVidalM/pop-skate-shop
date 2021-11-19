@@ -5,18 +5,10 @@
     <div class="text-center flex justify-between">
       <h6 class="text-blueGray-700 text-xl font-bold">Categorias</h6>
       <button
-        class="bg-red-600 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
+        class="bg-orange-500 text-white active:bg-red-700 font-bold uppercase text-xs px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
         type="button" [routerLink]="['/admin/categorias/new']">
         Crear categoria
       </button>
-    </div>
-
-    <div class="flex flex-wrap items-center">
-      <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-        <h3 class="font-semibold text-lg" [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'">
-          Titulo
-        </h3>
-      </div>
     </div>
   </div>
   <div class="block w-full overflow-x-auto">
@@ -42,6 +34,14 @@
             ">
             Categoria padre
           </th>
+          <th
+          class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+          [ngClass]="
+            color === 'light'
+              ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+              : 'bg-red-800 text-red-300 border-red-700'
+          ">
+        </th>
         </tr>
       </thead>
       <tbody>
@@ -64,7 +64,8 @@
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-right">
             <div class="text-right float-right ancho-25">
-              <app-table-dropdown [id]="category._id" entidad="category"></app-table-dropdown>
+              <app-table-dropdown [id]="category._id" entidad="category" (deleteRequest)="reloadCategorias($event)">
+                ></app-table-dropdown>
             </div>
           </td>
         </tr>

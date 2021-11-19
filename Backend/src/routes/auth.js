@@ -1,16 +1,14 @@
 import { Router } from "express";
 import { AuthController } from "../controllers/authController";
 import { password } from "../services/passport";
-import { validar} from "../services/validation";
+import { validar, mensajeExist} from "../services/validation";
 import { param, body, check } from "express-validator";
-
 const { checkSchema } = require("express-validator");
+
+
 
 const router = Router();
 
-function mensajeExist(campo){
-  return "El campo "+ campo + " no puede estar vacio"
-};
 router.post(
   "/register",
   [
@@ -19,7 +17,7 @@ router.post(
 
     check("email")
       .isEmail()
-      .withMessage("AAAAAAAAAAAAAAAAAA"),
+      .withMessage(mensajeExist("email")),
     check('password2').custom((value, { req }) => {
         if (value !== req.body.password) {
               throw new Error('Las contraseñas no coinciden');

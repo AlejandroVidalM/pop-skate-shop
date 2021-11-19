@@ -24,6 +24,8 @@ import {
   AuthGuardService as AuthGuard
 } from '../app/services/auth-guard.service';
 import { CategoryComponent } from "./views/admin/category/category.component";
+import { ProductComponent } from "./views/admin/product/product/product.component";
+import { NewProductComponent } from "./views/admin/product/new-product/new-product.component";
 const routes: Routes = [
   // admin views
   {
@@ -37,6 +39,9 @@ const routes: Routes = [
       { path: "categorias/new", component: NewCategoryComponent, canActivate: [AuthGuard] },
       { path: "categorias", component: CategoryComponent, canActivate: [AuthGuard], runGuardsAndResolvers: 'always', },
       { path: "categorias/edit/:id", component: NewCategoryComponent, canActivate: [AuthGuard]},
+      { path: "productos/new", component: NewProductComponent, canActivate: [AuthGuard] },
+      { path: "productos", component: ProductComponent, canActivate: [AuthGuard] },
+      { path: "productos/edit/:id", component: NewProductComponent, canActivate: [AuthGuard]},
       { path: "", redirectTo: "dashboard", pathMatch: "full" },
     ],
   },

@@ -9,3 +9,7 @@ export const validar = (req, res, next) => {
   }
 };
 
+export const mensajeExist = (campo) => {
+  return "El campo "+ campo + " no puede estar vacio"
+};
+
