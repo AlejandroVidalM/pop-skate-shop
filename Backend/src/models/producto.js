@@ -12,7 +12,6 @@ const productoSchema = new Schema({
     disponible: Boolean,
     stock: Number,
     descuento: Number,
-    esParteObligatoria: { type: Boolean, default:'false'},
 });
 
 const Producto = mongoose.model('Producto', productoSchema);

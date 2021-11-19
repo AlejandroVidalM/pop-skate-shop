@@ -10,14 +10,6 @@
         Crear categoria
       </button>
     </div>
-
-    <div class="flex flex-wrap items-center">
-      <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-        <h3 class="font-semibold text-lg" [ngClass]="color === 'light' ? 'text-blueGray-700' : 'text-white'">
-          Titulo
-        </h3>
-      </div>
-    </div>
   </div>
   <div class="block w-full overflow-x-auto">
     <!-- Categories table -->
@@ -42,6 +34,14 @@
             ">
             Categoria padre
           </th>
+          <th
+          class="px-6 align-middle border border-solid py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+          [ngClass]="
+            color === 'light'
+              ? 'bg-blueGray-50 text-blueGray-500 border-blueGray-100'
+              : 'bg-red-800 text-red-300 border-red-700'
+          ">
+        </th>
         </tr>
       </thead>
       <tbody>
