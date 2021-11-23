@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['/admin/tables']);
         },
         error =>{
-          if(error.status == 400) {
+          if(error.status == 401) {
             alert('Datos de login incorrectos');
           } else {
             alert('Error del servidor');
