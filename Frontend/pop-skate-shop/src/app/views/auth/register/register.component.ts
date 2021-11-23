@@ -59,9 +59,16 @@ export class RegisterComponent implements OnInit {
         localStorage.setItem("token", res.token);
         this.router.navigate(["/admin/tables"]);
       },
-      (err) => console.log(err)
+      error =>{
+        if(error.status == 400) {
+          alert('Datos de registro incorrectos');
+        } else {
+          alert('Error del servidor');
+        }
+        console.log(error)
+      }
     );
-    // this.authService.registro(registroDto);
+
   }
   ngOnInit(): void {}
 }

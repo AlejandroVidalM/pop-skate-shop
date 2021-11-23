@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { FormControl, FormGroup } from "@angular/forms";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { LoginDto } from "src/app/dto/login-dto";
 import { AuthService } from "src/app/services/auth.service";
@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
       private router: Router
     ) {}
     loginUserForm = new FormGroup({
-      email: new FormControl(""),
-      password: new FormControl("")
+      email: new FormControl("", [Validators.required, Validators.email]),
+      password: new FormControl("", [Validators.required])
     });
     doLogin(){
       console.log("componente")
@@ -30,7 +30,15 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', res.token);
           this.router.navigate(['/admin/tables']);
         },
-        err => console.log(err)
+        error =>{
+          if(error.status == 400) {
+            alert('Datos de login incorrectos');
+          } else {
+            alert('Error del servidor');
+          }
+          console.log(error)
+        }
+
       );
     }
 
