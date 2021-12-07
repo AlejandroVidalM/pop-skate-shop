@@ -12,6 +12,7 @@ const productoRepository = {
       disponible: nuevoProducto.disponible,
       stock: nuevoProducto.stock,
       descuento: nuevoProducto.descuento,
+      imgUrl: nuevoProducto.imgUrl,
     });
     const result = await producto.save();
     console.log(result);

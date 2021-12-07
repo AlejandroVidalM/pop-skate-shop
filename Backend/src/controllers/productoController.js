@@ -21,6 +21,7 @@ const ProductoController = {
           disponible: req.body.disponible,
           stock: req.body.stock,
           descuento: req.body.descuento,
+          imgUrl: req.body.imgUrl,
         });
         res.status(201).json(nuevoProducto);
       }

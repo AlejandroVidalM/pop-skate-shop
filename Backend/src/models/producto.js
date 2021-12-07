@@ -12,6 +12,7 @@ const productoSchema = new Schema({
     disponible: Boolean,
     stock: Number,
     descuento: Number,
+    imgUrl: String,
 });
 
 const Producto = mongoose.model('Producto', productoSchema);
