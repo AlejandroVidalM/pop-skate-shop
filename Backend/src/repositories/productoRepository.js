@@ -45,5 +45,15 @@ const productoRepository = {
       _id: id,
     });
   },
+  async inhabilitar(id) {
+    
+    const productoGuardado = await Producto.findById(id);
+    
+    if (productoGuardado != null) {
+      productoGuardado.disponible = false;
+      return await productoGuardado;
+    } else
+      return undefined
+  }
 };
 export { productoRepository };

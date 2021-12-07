@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   registerDto = new RegistroDto();
   provincias: Array<any> = getProvinces();
   selectedProvincia = null;
+  errorArray = [];
 
   ciudades = getCities(this.selectedProvincia);
   constructor(private authService: AuthService, private router: Router) {}
@@ -59,13 +60,13 @@ export class RegisterComponent implements OnInit {
         localStorage.setItem("token", res.token);
         this.router.navigate(["/admin/tables"]);
       },
-      error =>{
-        if(error.status == 400) {
+      err =>{
+        if(err.status == 400) {
+          this.errorArray = err.error;
           alert('Datos de registro incorrectos');
         } else {
           alert('Error del servidor');
         }
-        console.log(error)
       }
     );
 

@@ -1302,6 +1302,17 @@ select {
   background-color: rgba(249, 115, 22, var(--tw-bg-opacity));
 }
 
+.bg-orange-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(221, 107, 32, var(--tw-bg-opacity));
+}
+
+
+.bg-orange-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgba(192, 86, 33, var(--tw-bg-opacity));
+}
+
 .bg-red-200 {
   --tw-bg-opacity: 1;
   background-color: rgba(254, 202, 202, var(--tw-bg-opacity));
@@ -1402,6 +1413,10 @@ select {
   background-color: rgba(185, 28, 28, var(--tw-bg-opacity));
 }
 
+.active\:bg-orange-700:active {
+  --tw-bg-opacity: 1;
+  background-color: rgba(192, 86, 33, var(--tw-bg-opacity));
+}
 .active\:bg-blueGray-50:active {
   --tw-bg-opacity: 1;
   background-color: rgba(248, 250, 252, var(--tw-bg-opacity));

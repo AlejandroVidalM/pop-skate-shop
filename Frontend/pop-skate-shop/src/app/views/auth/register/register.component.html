@@ -10,6 +10,11 @@
             <h6 class="text-blueGray-500 text-sm font-bold">Crear una cuenta</h6>
           </div>
           <form [formGroup]="newUserForm" (ngSubmit)="doRegister()">
+            <div class="relative w-full mb-3" *ngIf="errorArray.length > 0">
+              <ul>
+                <li *ngFor="let error of errorArray">{{error.msg}}</li>
+              </ul>
+              </div>
             <div class="relative w-full mb-3">
               <label
                 class="block uppercase text-blueGray-600 text-xs font-bold mb-2"

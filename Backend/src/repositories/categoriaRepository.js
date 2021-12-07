@@ -1,7 +1,12 @@
 import bcrypt from "bcryptjs";
 import { Categoria } from "../models/categoria";
 
+const categoryNameExists = async (categoryName) => {
+  let result = await Categoria.findOne({nombre: categoryName});
+  return result
+}
 const categoriaRepository = {
+  
   async create(nuevaCategoria) {
     const categoria = new Categoria({
       nombre: nuevaCategoria.nombre,
@@ -44,4 +49,4 @@ const categoriaRepository = {
     });
   },
 };
-export { categoriaRepository };
+export { categoriaRepository, categoryNameExists };

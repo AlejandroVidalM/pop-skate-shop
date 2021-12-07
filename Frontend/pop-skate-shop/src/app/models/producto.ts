@@ -7,6 +7,7 @@ export interface Producto {
   disponible: Boolean,
   stock: Number,
   descuento: Number,
+  imgUrl: String,
   esParteObligatoria: { type: Boolean, default:'false'},
 }
 
