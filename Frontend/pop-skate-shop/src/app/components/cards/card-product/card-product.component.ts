@@ -10,7 +10,7 @@ import { ProductoService } from 'src/app/services/producto.service';
   styleUrls: ['./card-product.component.css']
 })
 export class CardProductComponent implements OnInit {
-
+  precioRebajado: number;
   constructor(
     private productoService: ProductoService,
     private router: Router) { }
@@ -19,8 +19,9 @@ export class CardProductComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    this.precioRebajado=this.producto.precio - this.producto.precio * this.producto.descuento/100
   }
+
   add(): void {
 
   }
