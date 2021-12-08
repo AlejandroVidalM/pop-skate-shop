@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
         res => {
           console.log(res);
           localStorage.setItem('token', res.token);
-          this.router.navigate(['/admin/tables']);
+          this.router.navigate(['/admin/productos']);
         },
         error =>{
           if(error.status == 401) {

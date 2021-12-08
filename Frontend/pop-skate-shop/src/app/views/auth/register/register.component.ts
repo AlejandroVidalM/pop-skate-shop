@@ -63,6 +63,8 @@ export class RegisterComponent implements OnInit {
       err =>{
         if(err.status == 400) {
           this.errorArray = err.error;
+          console.log(this.errorArray);
+
           alert('Datos de registro incorrectos');
         } else {
           alert('Error del servidor');
