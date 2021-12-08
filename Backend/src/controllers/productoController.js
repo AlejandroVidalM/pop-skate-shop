@@ -21,12 +21,13 @@ const ProductoController = {
           disponible: req.body.disponible,
           stock: req.body.stock,
           descuento: req.body.descuento,
+          imgUrl: req.body.imgUrl,
         });
         res.status(201).json(nuevoProducto);
       }
     } catch (error) {
       res.status(404).json({
-        Error: `Ha ocurrido un error en la petición: ${error.message}`,
+        error: `Ha ocurrido un error en la petición: ${error.message}`,
       });
     }
   },
@@ -36,7 +37,7 @@ const ProductoController = {
       res.sendStatus(204);
     } catch (error) {
       res.status(404).json({
-        Error: `Ha ocurrido un error en la petición: ${error.message}`,
+        error: `Ha ocurrido un error en la petición: ${error.message}`,
       });
     }
   },
@@ -53,7 +54,7 @@ const ProductoController = {
           });
     } catch (error) {
       res.status(404).json({
-        Error: `Ha ocurrido un error en la petición: ${error.message}`,
+        error: `Ha ocurrido un error en la petición: ${error.message}`,
       });
     }
   },
@@ -69,7 +70,7 @@ const ProductoController = {
       }
     } catch (error) {
       res.status(404).json({
-        Error: `Ha ocurrido un error en la petición: ${error.message}`,
+        error: `Ha ocurrido un error en la petición: ${error.message}`,
       });
     }
   },
@@ -87,7 +88,7 @@ const ProductoController = {
       }
     } catch (error) {
       res.status(404).json({
-        Error: `Ha ocurrido un error en la petición: ${error.message}`,
+        error: `Ha ocurrido un error en la petición: ${error.message}`,
       });
     }
   },
@@ -99,9 +100,10 @@ const ProductoController = {
         : res.status(404).json({
             mensaje: `El producto con ID: ${req.params.id} no está registrado en la base de datos`,
           });
-    } catch {
+    } catch (error)
+    {
       res.status(404).json({
-        Error: `Ha ocurrido un error en la petición: ${error.message}`,
+        error: `Ha ocurrido un error en la petición: ${error.message}`,
       });
     }
   },

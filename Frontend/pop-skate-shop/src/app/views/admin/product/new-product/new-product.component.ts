@@ -26,6 +26,7 @@ export class NewProductComponent implements OnInit {
     disponible: new FormControl(""),
     stock: new FormControl(""),
     descuento: new FormControl(""),
+    imgUrl: new FormControl(""),
     esParteObligatoria: new FormControl(""),
   });
   constructor(

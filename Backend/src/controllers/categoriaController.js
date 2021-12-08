@@ -27,7 +27,7 @@ const CategoriaController = {
     } catch (error) {
       
       res.status(404).json({
-        Error: `Ha ocurrido un error en la petición: ${error.message}`,
+        error: `Ha ocurrido un error en la petición: ${error.message}`,
       });
     }
   },
@@ -43,7 +43,7 @@ const CategoriaController = {
       res.sendStatus(204);
     } catch (error) {
       res.status(404).json({
-        Error: `Ha ocurrido un error en la petición: ${error.message}`,
+        error: `Ha ocurrido un error en la petición: ${error.message}`,
       });
     }
   },
@@ -61,7 +61,7 @@ const CategoriaController = {
       res
         .status(404)
         .json({
-          Error: `Ha ocurrido un error en la petición: ${error.message}`,
+          error: `Ha ocurrido un error en la petición: ${error.message}`,
         });
     }
   },
@@ -78,7 +78,7 @@ const CategoriaController = {
     res
       .status(404)
       .json({
-        Error: `Ha ocurrido un error en la petición: ${error.message}`,
+        error: `Ha ocurrido un error en la petición: ${error.message}`,
       });
     }
   },

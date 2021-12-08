@@ -12,6 +12,7 @@ const productoRepository = {
       disponible: nuevoProducto.disponible,
       stock: nuevoProducto.stock,
       descuento: nuevoProducto.descuento,
+      imgUrl: nuevoProducto.imgUrl,
     });
     const result = await producto.save();
     console.log(result);
@@ -45,5 +46,15 @@ const productoRepository = {
       _id: id,
     });
   },
+  async inhabilitar(id) {
+    
+    const productoGuardado = await Producto.findById(id);
+    
+    if (productoGuardado != null) {
+      productoGuardado.disponible = false;
+      return await productoGuardado;
+    } else
+      return undefined
+  }
 };
 export { productoRepository };

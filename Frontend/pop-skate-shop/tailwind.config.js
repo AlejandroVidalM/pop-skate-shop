@@ -18,7 +18,10 @@ module.exports = {
   },
   theme: {
     colors: {
-      ...colors,
+      gray: colors.coolGray,
+      blue: colors.lightBlue,
+      red: colors.rose,
+      pink: colors.fuchsia,
     },
     extend: {
       minHeight: {

@@ -41,5 +41,8 @@ export class ProductoService {
   getProductos(): Observable<Array<Producto>> {
     return this.http.get<Array<Producto>>(this.productoURL, this.authHeaders)
   }
+  findById(id):Observable<any> {
+    return this.http.get<any>(`${this.productoURL}/${id}`, this.authHeaders)
+  }
 
 }

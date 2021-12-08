@@ -40,6 +40,7 @@ mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology
         )
       );
       inicializacion.createAdmin();
+      inicializacion.createCategoryOther();
     }
   
   });
