@@ -44,5 +44,16 @@ const PedidoController = {
       });
     }
   },
+  comprarCarrito: async (req, res) => {
+    try {
+      const result = await pedidoRepository.buyCart(req.user);
+      res.sendStatus(200);
+
+    } catch (error) {
+      res.status(404).json({
+        error: `Ha ocurrido un error en la petición: ${error.message}`,
+      });
+    }
+  },
 };
 export { PedidoController };

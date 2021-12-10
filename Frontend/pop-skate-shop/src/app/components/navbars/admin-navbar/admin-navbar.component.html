@@ -40,10 +40,14 @@
       <li>
         <app-user-dropdown class="block"></app-user-dropdown>
       </li>
-      <li>
+      <li
+      >
+      <button [routerLink]="['/shop/cart']">
         <i class="fa fa-shopping-cart fa-2x"></i>
-        <span class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-orange-500 bg-blueGray-700 rounded-full">9</span>
-      </li>
+        <span class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-orange-500 bg-blueGray-700 rounded-full">{{carritoCantidad }}</span>
+
+      </button>
+         </li>
     </ul>
   </div>
 </nav>

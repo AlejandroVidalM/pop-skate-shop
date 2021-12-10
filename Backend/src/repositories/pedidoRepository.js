@@ -31,21 +31,27 @@ const pedidoRepository = {
       console.log(result);
       return result;
   },
+  async buyCart(user) {
+    let carrito = await pedidoRepository.findCart(user);
+    carrito.estaPedido=true;
+    
+    const pedido = await carrito.save();
+    // carrito.estaPedido=false;
+    // carrito.lineasPedido.forEach(function(linea){
+    //   lineaPedidoRepository.delete(linea._id)
+    // })
+    // carrito.save();
+    return pedido;
+
+
+  },
+  
   async addToCart(productoId, cantidad, user) {
     const producto = await productoRepository.findById(productoId);
-    console.log("producto");
-    console.log(producto);
     const carrito = await pedidoRepository.findCart(user);
-    console.log("carrito");
-    console.log(carrito);
     let productoEnCarro = carrito.lineasPedido.filter((linea) => linea.producto.equals(productoId));
-    console.log("productoEnCarro");
-    console.log(productoEnCarro);
-    console.log("productoEnCarro");
     if(productoEnCarro == 0){
       const precioLinea = producto.precioRebajado * cantidad;
-    console.log("precioLinea");
-    console.log(precioLinea);
     const lineaPedido = new LineaPedido({
       producto: producto._id,
       cantidad: cantidad,
@@ -55,7 +61,6 @@ const pedidoRepository = {
     console.log(lineaPedido);
     carrito.lineasPedido.push(lineaPedido);
     }else{
-      console.log("Entro en else");
       carrito.lineasPedido.filter((linea) => linea.producto.equals(productoId)).forEach(function(linea){
         
         const cantidad = linea.cantidad+=1;

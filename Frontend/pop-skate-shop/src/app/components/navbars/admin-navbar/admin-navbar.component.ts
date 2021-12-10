@@ -9,12 +9,14 @@ import { PedidoService } from "src/app/services/pedido.service";
 export class AdminNavbarComponent implements OnInit {
   constructor(
     private pedidoService: PedidoService) {}
-    carrito:Pedido;
+    carrito:any;
+    carritoCantidad:Number;
   ngOnInit(): void {
     this.pedidoService.getCarrito().subscribe(
       (res) => {
         console.log(res);
-        this.carrito=res.pedido
+        this.carrito=res
+        this.carritoCantidad = this.carrito.lineasPedido.length
       },
       (err) => console.log(err)
     );;
