@@ -30,6 +30,11 @@ const categoriaRepository = {
     const result = await Categoria.find({categoriaPadre: id});
     return result != null ? result : undefined;
   },
+  async findBynombre(nombre) {
+    
+    const result = await Categoria.findOne({nombre: nombre});
+    return result != null ? result : undefined;
+  },
   
   async updateById(id, categoriaModificada) {
 

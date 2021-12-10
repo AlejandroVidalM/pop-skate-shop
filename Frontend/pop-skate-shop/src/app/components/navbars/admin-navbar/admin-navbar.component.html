@@ -37,7 +37,17 @@
     </form>
     <!-- User -->
     <ul class="flex-col md:flex-row list-none items-center hidden md:flex">
-      <app-user-dropdown class="block"></app-user-dropdown>
+      <li>
+        <app-user-dropdown class="block"></app-user-dropdown>
+      </li>
+      <li
+      >
+      <button [routerLink]="['/shop/cart']">
+        <i class="fa fa-shopping-cart fa-2x"></i>
+        <span class="inline-flex items-center justify-center px-2 py-1 mr-2 text-xs font-bold leading-none text-orange-500 bg-blueGray-700 rounded-full">{{carritoCantidad }}</span>
+
+      </button>
+         </li>
     </ul>
   </div>
 </nav>

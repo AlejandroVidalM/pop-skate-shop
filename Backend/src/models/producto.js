@@ -7,12 +7,13 @@ const productoSchema = new Schema({
     precio: Number,
     categoria: {
         type: mongoose.ObjectId,
-        ref: 'Caegoria'
+        ref: 'Categoria'
     },
     disponible: Boolean,
     stock: Number,
     descuento: Number,
     imgUrl: String,
+    precioRebajado: Number,
 });
 
 const Producto = mongoose.model('Producto', productoSchema);
