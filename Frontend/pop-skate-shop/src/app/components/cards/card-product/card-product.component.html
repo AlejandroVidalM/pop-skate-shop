@@ -26,9 +26,9 @@
           <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
             {{precioRebajado | number:'1.2-2'}}€ <span *ngIf="producto.descuento!=0" class="line-through text-red-500">{{producto.precio| number:'1.2-2'}}</span>
           </p>
-          <button (click)="add()"
+          <button (click)="add(1)"
             class="text-sm py-2 px-4 font-normal block w-full whitespace-nowrap bg-transparent text-blueGray-700">
-            <i class="fas fa-edit"></i>
+            <i class="fas fa-shopping-cart"></i>
             Añadir al carrito
           </button>
         </div>

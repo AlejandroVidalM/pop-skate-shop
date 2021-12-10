@@ -1,4 +1,5 @@
 import { categoriaRepository } from "../repositories/categoriaRepository";
+import { productoRepository } from "../repositories/productoRepository";
 
 const CategoriaController = {
   createCategoria: async (req, res, next) => {
@@ -39,6 +40,13 @@ const CategoriaController = {
       categoriaHijas.forEach((categoria) =>
         categoriaRepository.delete(categoria._id)
       );
+      let categoriaOtros = await categoriaRepository.findBynombre("Otros");
+      let listaProducto = await productoRepository.findByCategoria(req.params.id);
+      listaProducto.forEach(function(producto){
+        producto.categoria= categoriaOtros._id;
+        producto.save();
+      }
+      )
       const result = await categoriaRepository.delete(req.params.id);
       res.sendStatus(204);
     } catch (error) {

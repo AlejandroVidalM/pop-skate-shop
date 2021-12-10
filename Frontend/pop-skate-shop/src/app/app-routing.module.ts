@@ -26,6 +26,7 @@ import {
 import { CategoryComponent } from "./views/admin/category/category.component";
 import { ProductComponent } from "./views/admin/product/product/product.component";
 import { NewProductComponent } from "./views/admin/product/new-product/new-product.component";
+import { CartComponent } from "./views/shop/cart/cart.component";
 const routes: Routes = [
   // admin views
   {
@@ -53,6 +54,14 @@ const routes: Routes = [
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
       { path: "", redirectTo: "login", pathMatch: "full" },
+    ],
+  },
+  // user views
+  {
+    path: "shop",
+    component: AdminComponent,
+    children: [
+      { path: "cart", component: CartComponent },
     ],
   },
   // no layout views

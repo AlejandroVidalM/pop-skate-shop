@@ -4,6 +4,7 @@ import { Producto } from "../models/producto";
 
 const productoRepository = {
   async create(nuevoProducto) {
+    let rebajado= nuevoProducto.precio-nuevoProducto.precio*nuevoProducto.descuento/100
     const producto = new Producto({
       nombre: nuevoProducto.nombre,
       marca: nuevoProducto.marca,
@@ -13,6 +14,7 @@ const productoRepository = {
       stock: nuevoProducto.stock,
       descuento: nuevoProducto.descuento,
       imgUrl: nuevoProducto.imgUrl,
+      precioRebajado:rebajado,
     });
     const result = await producto.save();
     console.log(result);
@@ -28,7 +30,7 @@ const productoRepository = {
   },
   async findByCategoria(categoria) {
     
-    const result = await Categoria.find({_id: categoria});
+    const result = await Producto.find({categoria: categoria});
     return result != null ? result : undefined;
   },
   
