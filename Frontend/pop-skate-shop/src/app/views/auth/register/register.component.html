@@ -1,0 +1,174 @@
+<div class="container mx-auto px-4 h-full">
+  <div class="flex content-center items-center justify-center h-full">
+    <div class="w-full lg:w-6/12 px-4">
+      <div
+        class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0 "
+      >
+
+        <div class="flex-auto px-4 lg:px-10 py-10 pt-0">
+          <div class="text-blueGray-400 text-center mb-3 font-bold">
+            <h6 class="text-blueGray-500 text-sm font-bold">Crear una cuenta</h6>
+          </div>
+          <form [formGroup]="newUserForm" (ngSubmit)="doRegister()">
+            <div class="relative w-full mb-3 rounded-lg bg-red-200 border-1" *ngIf="errorArray.length > 0">
+              <ul>
+                <li *ngFor="let error of errorArray">{{error.msg}}</li>
+              </ul>
+              </div>
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                htmlFor="grid-password"
+              >
+                Nombre
+              </label>
+              <input
+                formControlName="nombre"
+                type="text"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                placeholder="Nombre"
+              />
+            </div>
+
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                htmlFor="grid-password"
+              >
+                Apellidos
+              </label>
+              <input
+                formControlName="apellidos"
+                type="text"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                placeholder="Apellidos"
+              />
+            </div>
+
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                htmlFor="grid-password"
+              >
+                Provincia
+              </label>
+              <select formControlName="provincia" (change)="onChange($event)"
+              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              >
+                <option [ngValue]="null" disabled>provincia</option>
+                <option *ngFor="let provincia of provincias; let i = index" [value]="provincia.name">
+                 {{ provincia.name | titlecase }}
+                </option>
+              </select>
+            </div>
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                htmlFor="grid-password"
+              >
+                Ciudad
+              </label>
+              <select formControlName="ciudad"
+              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+              >
+                <option [ngValue]="null" disabled>ciudad</option>
+                <option *ngFor="let ciudad of ciudades" >
+                 {{ ciudad }}
+                </option>
+              </select>
+            </div>
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                htmlFor="grid-password"
+              >
+                Dirección
+              </label>
+              <input
+                formControlName="direccion"
+                type="text"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                placeholder="Dirección"
+              />
+            </div>
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                htmlFor="grid-password"
+              >
+                Codigo postal
+              </label>
+              <input
+                formControlName="codigoPostal"
+                type="text"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                placeholder="Codigo postal"
+              />
+            </div>
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                htmlFor="grid-password"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                formControlName="email"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                placeholder="Email"
+              />
+            </div>
+
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                htmlFor="grid-password"
+              >
+                Contraseña
+              </label>
+              <input
+                type="password"
+                formControlName="password"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                placeholder="Password"
+              />
+            </div>
+            <div class="relative w-full mb-3">
+              <label
+                class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                htmlFor="grid-password"
+              >
+                Repetir contraseña
+              </label>
+              <input
+                type="password"
+                formControlName="password2"
+                class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                placeholder="Password"
+              />
+            </div>
+
+
+
+            <div class="text-center mt-6">
+              <button type="submit" class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"> Crear cuenta </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="flex flex-wrap mt-6 relative">
+        <div class="w-1/2">
+          <a [routerLink]="['/auth/login']" class="text-blueGray-200">
+            <small>¿Ya tienes cuenta?</small>
+          </a>
+        </div>
+        <div class="w-1/2 text-right">
+          <a [routerLink]="['/auth/login']" class="text-blueGray-200">
+            <small>Iniciar sesión</small>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
