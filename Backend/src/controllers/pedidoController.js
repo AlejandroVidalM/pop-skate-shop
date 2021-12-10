@@ -32,6 +32,17 @@ const PedidoController = {
           error: `Ha ocurrido un error en la petición: ${error.message}`,
         });
     }
-  }
+  },
+  
+  quitarProducto: async (req, res) => {
+    try {
+      const result = await lineaPedidoRepository.delete(req.params.id);
+      res.sendStatus(204);
+    } catch (error) {
+      res.status(404).json({
+        error: `Ha ocurrido un error en la petición: ${error.message}`,
+      });
+    }
+  },
 };
 export { PedidoController };

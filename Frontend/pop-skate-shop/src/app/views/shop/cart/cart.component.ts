@@ -11,6 +11,7 @@ import { ProductoService } from 'src/app/services/producto.service';
   styleUrls: ['./cart.component.css']
 })
 export class CartComponent implements OnInit {
+  [x: string]: any;
   get color(): string {
     return this._color;
   }
@@ -24,6 +25,11 @@ export class CartComponent implements OnInit {
   constructor(private pedidoService: PedidoService, private productoService: ProductoService) { }
 
   ngOnInit(): void {
+    this.reloadCarrito();
+
+  }
+
+  reloadCarrito():void{
     this.pedidoService.getCarrito().subscribe(
       (res) => {
         this.carrito=res
@@ -39,9 +45,7 @@ export class CartComponent implements OnInit {
       },
       err => console.log(err)
     );
-
   }
-
   findProductById(id: string): Producto{
     let productFinded: Producto = undefined;
     for (var product of this.productList){
@@ -52,6 +56,11 @@ export class CartComponent implements OnInit {
     }
 
     return productFinded;
+  }
+  quitar(id: string): void {
+    this.pedidoService.removeLinea(id).subscribe((rep) => {
+      this.reloadCarrito();
+    });
   }
 
 }

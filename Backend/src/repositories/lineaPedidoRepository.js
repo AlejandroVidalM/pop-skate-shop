@@ -10,5 +10,10 @@ const lineaPedidoRepository = {
     console.log(result);
     return result;
   },
+  async delete(id) {
+    return await LineaPedido.deleteOne({
+      _id: id,
+    });
+  },
 };
 export { lineaPedidoRepository };

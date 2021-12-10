@@ -9,4 +9,5 @@ const router = Router();
 
 router.get('', token(), PedidoController.findCart);
 router.post('/:id', token(), PedidoController.addToCart);
+router.delete('/delete/:id', token(), PedidoController.quitarProducto);
 export default router;
