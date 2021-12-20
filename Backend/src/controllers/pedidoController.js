@@ -33,6 +33,34 @@ const PedidoController = {
         });
     }
   },
+  findPedido: async (req,res) => {
+    try {
+
+      let pedidos = await pedidoRepository.findPedidos(req.user);
+      
+      res.status(200).json(pedidos);
+    } catch (error) {
+      res
+        .status(404)
+        .json({
+          error: `Ha ocurrido un error en la petición: ${error.message}`,
+        });
+    }
+  },
+  findAllPedidos: async (req,res) => {
+    try {
+
+      let pedidos = await pedidoRepository.findAllPedidos();
+      
+      res.status(200).json(pedidos);
+    } catch (error) {
+      res
+        .status(404)
+        .json({
+          error: `Ha ocurrido un error en la petición: ${error.message}`,
+        });
+    }
+  },
   
   quitarProducto: async (req, res) => {
     try {
@@ -47,7 +75,29 @@ const PedidoController = {
   comprarCarrito: async (req, res) => {
     try {
       const result = await pedidoRepository.buyCart(req.user);
-      res.sendStatus(200);
+      res.sendStatus(200).json(result);
+
+    } catch (error) {
+      res.status(404).json({
+        error: `Ha ocurrido un error en la petición: ${error.message}`,
+      });
+    }
+  },
+  confirmarEnvio: async (req, res) => {
+    try {
+      const result = await pedidoRepository.confirmarEnvio(req.params.id);
+      res.sendStatus(200).json(result);
+
+    } catch (error) {
+      res.status(404).json({
+        error: `Ha ocurrido un error en la petición: ${error.message}`,
+      });
+    }
+  },
+  confirmarEntrega: async (req, res) => {
+    try {
+      const result = await pedidoRepository.confirmarEntrega(req.params.id);
+      res.sendStatus(200).json(result);
 
     } catch (error) {
       res.status(404).json({

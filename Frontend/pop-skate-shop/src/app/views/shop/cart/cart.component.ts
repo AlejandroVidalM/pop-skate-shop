@@ -33,6 +33,10 @@ export class CartComponent implements OnInit {
     this.pedidoService.getCarrito().subscribe(
       (res) => {
         this.carrito=res
+        console.log("this.carrito");
+        console.log(this.carrito);
+        console.log("this.carrito");
+
         this.lineasPedido=this.carrito.lineasPedido
       },
       (err) => console.log(err)
@@ -60,6 +64,12 @@ export class CartComponent implements OnInit {
   quitar(id: string): void {
     this.pedidoService.removeLinea(id).subscribe((rep) => {
       this.reloadCarrito();
+    });
+  }
+  crearPedido(): void {
+    this.pedidoService.buy().subscribe((rep) => {
+      console.log(rep);
+
     });
   }
 
