@@ -16,6 +16,24 @@ const pedidoRepository = {
       return this.createCart(user);
     }
   },
+  async findPedidos(user) {
+    const result = await Pedido.find({estaPedido:true, usuario:user._id}).populate("lineasPedido");
+    console.log("RESULT");
+    console.log(result);
+    if( result != undefined){
+    return result;
+    }else{
+      return this.createCart(user);
+    }
+  },
+  async findAllPedidos() {
+    const result = await Pedido.find({estaPedido:true}).populate("lineasPedido");
+    if( result != undefined){
+    return result;
+    }else{
+      return this.createCart(user);
+    }
+  },
   async createCart(user) {
       const carrito = new Pedido({
         usuario: user._id,
@@ -24,26 +42,40 @@ const pedidoRepository = {
         direccion: user.direccion,
         codigoPostal: user.codigoPostal,
         estaPedido: false,
+        estaEnviado: false,
         estaEntregado:false,
         esPersonalizado:false,
+        total:0,
       });
       const result = await carrito.save();
       console.log(result);
       return result;
   },
   async buyCart(user) {
-    let carrito = await pedidoRepository.findCart(user);
+    const carrito = await pedidoRepository.findCart(user);
     carrito.estaPedido=true;
+    carrito.fechaPedido=Date.now();
     
-    const pedido = await carrito.save();
-    // carrito.estaPedido=false;
-    // carrito.lineasPedido.forEach(function(linea){
-    //   lineaPedidoRepository.delete(linea._id)
-    // })
-    // carrito.save();
-    return pedido;
+    const result = await carrito.save();
+    console.log("result");
+    console.log(result);
+    console.log("result");
+    return result;
 
 
+  },
+  async confirmarEnvio(pedidoId){
+    const pedido = await Pedido.findOne({_id:pedidoId}).populate("lineasPedido");
+    pedido.estaEnviado = true;
+    const result = await pedido.save();
+    return result
+  },
+  async confirmarEntrega(pedidoId){
+    const pedido = await Pedido.findOne({_id:pedidoId}).populate("lineasPedido");
+    pedido.estaEntregado = true;
+    pedido.fechaEntrega=Date.now();
+    const result = await pedido.save();
+    return result
   },
   
   async addToCart(productoId, cantidad, user) {
@@ -72,7 +104,7 @@ const pedidoRepository = {
       });
 
     }
-    
+    carrito.total+=producto.precioRebajado;
     const result = await carrito.save();
     console.log(result);
     return result;

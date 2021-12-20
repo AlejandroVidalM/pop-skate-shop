@@ -28,6 +28,7 @@ app.use('/perfil', routes.user);
 app.use('/categoria', routes.categoria);
 app.use('/producto', routes.producto);
 app.use('/carrito', routes.carrito);
+app.use('/pedido', routes.pedido);
 
 mongoose.connect(process.env.DB_URI, { useNewUrlParser: true, useUnifiedTopology: true }, err => {
   

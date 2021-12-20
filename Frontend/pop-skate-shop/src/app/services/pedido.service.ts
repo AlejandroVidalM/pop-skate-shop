@@ -34,4 +34,9 @@ export class PedidoService {
   removeLinea(id):Observable<PedidoResponse>  {
     return this.http.delete<PedidoResponse>(`${this.CarritoUrl}/delete/${id}`, this.authHeaders);
   }
+  buy():Observable<PedidoResponse> {
+    console.log(this.token);
+
+    return this.http.post<PedidoResponse>(`${this.CarritoUrl}/buy`, this.authHeaders);
+  }
 }
